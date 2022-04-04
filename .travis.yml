@@ -6,7 +6,7 @@ before_install:
   - docker build -t navywharf/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run navywharf/react-test nmp test -- --coverage
+  - docker run -e CI=true navywharf/react-test npm test
 
 after_success:
   - docker build -t navywharf/multi-client ./client
@@ -20,5 +20,4 @@ after_success:
   - docker push navywharf/multi-nginx
   - docker push navywharf/multi-server
   - docker push navywharf/multi-worker
-
-
+  
