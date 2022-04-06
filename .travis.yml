@@ -20,4 +20,16 @@ after_success:
   - docker push navywharf/multi-nginx
   - docker push navywharf/multi-server
   - docker push navywharf/multi-worker
-  
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-west-q-xxxx
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
