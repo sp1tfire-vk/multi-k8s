@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: securitisandbox1-com-tls
+spec:
+  secretName: securitisandbox1-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: securitisandbox1.com
+  dnsNames:
+    - securitisandbox1.com
+    - www.securitisandbox1.com
